@@ -1,7 +1,6 @@
 package com.lazyoung.hellomoon;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.os.Bundle;
 
 public class HelloMoonActivity extends Activity {
