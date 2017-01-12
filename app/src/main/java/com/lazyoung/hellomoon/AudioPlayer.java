@@ -13,6 +13,15 @@ public class AudioPlayer {
         }
     }
 
+    public void pause() {
+        if(mPlayer.isPlaying()){
+            mPlayer.pause();
+        }
+        else {
+            mPlayer.start();
+        }
+    }
+
     public void play(Context c) {
         stop();
         mPlayer = MediaPlayer.create(c, R.raw.one_small_step);
