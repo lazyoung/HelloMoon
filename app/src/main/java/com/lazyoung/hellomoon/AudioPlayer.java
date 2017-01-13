@@ -13,24 +13,26 @@ public class AudioPlayer {
         }
     }
 
-    public void pause() {
-        if(mPlayer.isPlaying()){
+    public void playPause(Context c) {
+        if(mPlayer == null) {
+            mPlayer = MediaPlayer.create(c, R.raw.one_small_step);
+            mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+              @Override
+              public void onCompletion(MediaPlayer mp) {
+                  stop();
+              }
+            });
+        }
+        
+        if(mPlayer.isPlaying()) {
             mPlayer.pause();
         }
         else {
             mPlayer.start();
         }
     }
-
-    public void play(Context c) {
-        stop();
-        mPlayer = MediaPlayer.create(c, R.raw.one_small_step);
-        mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                stop();
-            }
-        });
-        mPlayer.start();
+    
+    public boolean isPlaying() {
+        return mPlayer.isPlaying();
     }
 }
